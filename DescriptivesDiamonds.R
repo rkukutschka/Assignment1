@@ -41,5 +41,3 @@ mean(diamonds$price)
 
 #Some descriptive statistics:
 
-rm(i)
-
