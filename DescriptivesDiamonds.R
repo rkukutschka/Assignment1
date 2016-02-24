@@ -38,6 +38,7 @@ class
 str(diamonds)
 mean(diamonds$carat)
 mean(diamonds$price)
+mean(diamonds$x)
 
 #Some descriptive statistics:
 
