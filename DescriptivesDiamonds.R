@@ -31,14 +31,16 @@ length(diamonds) #database contains 10 columns
 nrow(diamonds) #database contains 5390 rows
 
 #Type of data by object
-class(diamonds$carat)
-class(diamonds$cut)
-class
+sapply(diamonds, is.numeric)
+summary(diamonds)
 
-str(diamonds)
-mean(diamonds$carat)
-mean(diamonds$price)
-mean(diamonds$x)
+#Calculating the mean of numeric variables
+sapply(diamonds, mean) %>% round(digits=2)
+sapply(diamonds, sd) %>% round(digits=2)
 
-#Some descriptive statistics:
+table(diamonds$color)
+table(diamonds$clarity)
+table(diamonds$color, diamonds$clarity)
 
+#Descriptives for categorical variables in the database (color, purity and cut)
+by(diamonds$price,list(diamonds$purity),FUN=mean) 
