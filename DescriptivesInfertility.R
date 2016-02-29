@@ -67,12 +67,14 @@ sapply(infert[,c(2:8)], sd) %>% round(digits=2)
 #Based on the results the highest variation in the data seems to be in the variables "carat" and "price".
 #The difference between the mean and the median values in these 2 variables also suggest a skewed data that is not normally distributed.
 
+#Calculating the mean of numeric variables
+mean(infert$age)   #Mean of age variable at the infertile dataset is 31.50403
 
 hist.default(infert$age, breaks=20)
 hist.default(infert$induced, breaks=30)
 
-hist.default(diamonds$table, breaks=30)
-hist.default(diamonds$depth, breaks=30)
+hist.default(infert$education)
+hist.default(infert$depth, breaks=30)
 
 table(infert$age)
 table(infert$induced)      #143 women with no induced abortion, 68 women with one induced abortion and 37 women with two or more induced abortion.
@@ -83,24 +85,15 @@ table(infert$spontaneous, infert$education)  #With more level of education, spon
 
 #Changing age from numeric to catagorical variable
 infert$agecat1<-cut(infert$age, c(21,26,31,36,41))
-table(infert$agecat1)
-table(infert$spontaneous, infert$agecat1) %>% 
+table(infert$agecat1)  #21-26=39 women, 26-31=90 women, 31-36=66 women and 36-41=38 women
+
+#Catagorical Variable with Percentage calculation
+table(infert$spontaneous, infert$agecat1) 
 table1<- table(infert$spontaneous, infert$agecat1)
 prop.table(table1,2)
-
-prop.table(infert$spontaneous, infert$agecat1)
-infert$Pct <- infert$Total.Count 
-sum(infert$Total.Count)
-infert
-
-infert$percent<- prop.table(infert$age)
-df
-table(infert$age)
-
-table(infert$education)
-table(infert$age, infert$education)
+#The highest spontaneous abortion is among women with age (36-41) with 21% & (26-31) 15%.
 
 
-#Calculating the mean of numeric variables
-mean(infert$age)   #Mean of age variable at the infertile dataset is 31.50403
-mean(infert$education) ?
+
+
+
