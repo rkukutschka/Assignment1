@@ -79,7 +79,20 @@ table(infert$spontaneous)  #141 women with no spontaneous abortion, 71 women wit
 table(infert$induced, infert$spontaneous)
 table(infert$induced, infert$education)      #With more level of education, induced abortion is lower
 table(infert$spontaneous, infert$education)  #With more level of education, spontaneous abortion is lower
-table(infert$spontaneous, infert$age)
+
+#Changing age from numeric to catagorical variable
+infert$agecat1<-cut(infert$age, c(21,26,31,36,41))
+table(infert$agecat1)
+table(infert$spontaneous, infert$agecat1)
+
+prop.table(infert$spontaneous, infert$agecat1)
+infert$Pct <- infert$Total.Count 
+sum(infert$Total.Count)
+infert
+
+infert$percent<- prop.table(infert$age)
+df
+table(infert$age)
 
 table(infert$education)
 table(infert$age, infert$education)
