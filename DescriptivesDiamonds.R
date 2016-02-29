@@ -20,7 +20,6 @@ data()
 #the prices and attributes of almost 54,000 diamonds. 
 data(diamonds) 
 names(diamonds)
-?diamonds
 
 #Taking a look at the data:
 head(diamonds)
@@ -36,19 +35,17 @@ summary(diamonds)
 
 #Calculating the mean of numeric variables
 sapply(diamonds[,c(1,5:10)], mean) %>% round(digits=2) 
-sapply(diamonds, sd) %>% round(digits=2)
+sapply(diamonds[,c(1,5:10)], sd) %>% round(digits=2)
 
 table(diamonds$color)
 table(diamonds$clarity)
 table(diamonds$color, diamonds$clarity)
 
 #Descriptives for categorical variables in the database (color, purity and cut)
-by(diamonds$price,list(diamonds$purity),FUN=mean) 
-
 #Mean of price of each categorical variable
-aggregate(price~clarity, diamonds, mean)
-aggregate(price~cut, diamonds, mean)
-aggregate(price~color, diamonds, mean)
+by(diamonds$price,list(diamonds$clarity),FUN=mean) 
+by(diamonds$price,list(diamonds$cut),FUN=mean) 
+by(diamonds$price,list(diamonds$color),FUN=mean)
 
 #Plotting diamonds by clarity
 diamonds$clarity <- ordered(diamonds$clarity, 
