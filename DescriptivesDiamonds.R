@@ -45,7 +45,17 @@ table(diamonds$color, diamonds$clarity)
 #Descriptives for categorical variables in the database (color, purity and cut)
 by(diamonds$price,list(diamonds$purity),FUN=mean) 
 
+#Mean of price of each categorical variable
+aggregate(price~clarity, diamonds, mean)
+aggregate(price~cut, diamonds, mean)
+aggregate(price~color, diamonds, mean)
+
 #Plotting diamonds by clarity
 diamonds$clarity <- ordered(diamonds$clarity, 
       levels = c("I1", "SI1", "SI2", "VS1", "VS2", "VVS1", "VVS2", "IF")) #Ordering clarity of diamonds from worst to best
 qplot(x = clarity, data = diamonds)
+
+qplot(x = cut, data = diamonds)
+
+#Boxplot of price of diamonds by cut
+split(diamonds$price, diamonds$cut) %>% boxplot()
