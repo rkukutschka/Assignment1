@@ -35,7 +35,7 @@ sapply(diamonds, is.numeric)
 summary(diamonds)
 
 #Calculating the mean of numeric variables
-sapply(diamonds, mean) %>% round(digits=2)
+sapply(diamonds[,c(1,5:10)], mean) %>% round(digits=2) 
 sapply(diamonds, sd) %>% round(digits=2)
 
 table(diamonds$color)
