@@ -17,23 +17,22 @@ library(ggplot2)
 data()
 
 #We chose the database called "diamonds", which includes information regarding 
-#the prices and attributes of almost 54,000 diamonds. 
+#the prices and attributes of almost 54,000 diamonds.
 data(diamonds) 
 names(diamonds)
 
-#Taking a look at the data:
+#OVERLOOK OF THE DATASET:
 head(diamonds)
-tails(diamonds)
-class(diamonds)
+length(diamonds) 
+nrow(diamonds) 
+sapply(diamonds, is.numeric) 
+#The database contains 10 columns and 5390 rows
+#The variables "cut", "color" and "clarity" are not numeric.
 
-length(diamonds) #database contains 10 columns
-nrow(diamonds) #database contains 5390 rows
+sapply(diamonds, function(x) sum(is.na(x)))
+#There are no missing values in the database
 
-#Type of data by object
-sapply(diamonds, is.numeric)
-summary(diamonds)
-
-#Calculating the mean of numeric variables
+#DESCRIPTIVES FOR NUMERIC VARIABLES
 sapply(diamonds[,c(1,5:10)], mean) %>% round(digits=2) 
 sapply(diamonds[,c(1,5:10)], sd) %>% round(digits=2)
 
@@ -41,7 +40,19 @@ table(diamonds$color)
 table(diamonds$clarity)
 table(diamonds$color, diamonds$clarity)
 
-#Descriptives for categorical variables in the database (color, purity and cut)
+
+#Type of data by object
+
+summary(diamonds)
+
+
+#Frequencies of categorical variables in the database (color, purity and cut)
+table(diamonds$color)
+table(diamonds$clarity)
+table(diamonds$cut)
+table(diamonds$color, diamonds$clarity)
+
+
 #Mean of price of each categorical variable
 by(diamonds$price,list(diamonds$clarity),FUN=mean) 
 by(diamonds$price,list(diamonds$cut),FUN=mean) 
