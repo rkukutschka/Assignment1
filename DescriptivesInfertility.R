@@ -20,6 +20,7 @@ dir()
 library(dplyr)
 library(rio)
 library(ggplot2)
+library(vcdExtra)
 
 #Database selection
 data()             #Checking out the available databases
@@ -83,7 +84,9 @@ table(infert$spontaneous, infert$education)  #With more level of education, spon
 #Changing age from numeric to catagorical variable
 infert$agecat1<-cut(infert$age, c(21,26,31,36,41))
 table(infert$agecat1)
-table(infert$spontaneous, infert$agecat1)
+table(infert$spontaneous, infert$agecat1) %>% 
+table1<- table(infert$spontaneous, infert$agecat1)
+prop.table(table1,2)
 
 prop.table(infert$spontaneous, infert$agecat1)
 infert$Pct <- infert$Total.Count 
