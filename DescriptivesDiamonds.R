@@ -77,3 +77,6 @@ qplot(x = cut, data = diamonds)
 
 #Boxplot of price of diamonds by cut
 split(diamonds$price, diamonds$cut) %>% boxplot()
+
+
+#goodjob
