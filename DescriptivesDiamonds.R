@@ -21,18 +21,20 @@ data()
 data(diamonds) 
 names(diamonds)
 
-#I. OVERLOOK OF THE DATASET:
+#I. OVERLOOK OF THE DATASET
+
 head(diamonds)
 length(diamonds) 
 nrow(diamonds) 
 sapply(diamonds, is.numeric)
-#The database contains 10 columns and 5390 rows
+#The database contains 10 columns and 53940 rows.
 #The variables "cut", "color" and "clarity" are not numeric.
 
 sapply(diamonds, function(x) sum(is.na(x)))
 #There are no missing values in the dataset.
 
 #II. DESCRIPTIVES FOR NUMERIC VARIABLES
+
 sapply(diamonds[,c(1,5:10)], range) %>% round(digits=2) 
 sapply(diamonds[,c(1,5:10)], mean) %>% round(digits=2) 
 sapply(diamonds[,c(1,5:10)], median) %>% round(digits=2)
@@ -41,26 +43,28 @@ sapply(diamonds[,c(1,5:10)], sd) %>% round(digits=2)
 #The small standard deviation in "carat", "depth" and "table" show that the values for these variables are closely grouped together.
 
 hist.default(diamonds$price, breaks=30)
-#The histogram proves that "price" is indeed skewed. There is a high number of diamonds under $5000, but also 
+#The histogram proves that "price" is indeed skewed. There is a high number of diamonds under $5000, but also a wide range in prices that go up to >$15,000.
 
 hist.default(diamonds$carat, breaks=50)
 hist.default(diamonds$depth, breaks=30)
 hist.default(diamonds$table, breaks=50)
 
 #III. DESCRIBING THE CATEGORICAL VARIABLES
+#Given that categorical variables cannot be described with the same methods as the numerical ones, this section
+#offers a descriptive overview of "color", "clarity" and "cut".
+#The first step to describe categorical data is to show the FREQUENCY of each category:
+
 table(diamonds$color)
+#The color of diamonds ranges from J (worst) to D (best). The database contains 6775 diamonds
+#with the best color (12.6%) and 2808 diamonds with the worst one. 
+
 table(diamonds$clarity)
-table(diamonds$color, diamonds$clarity)
+#Similar as with the color, the clarity of diamonds is also ranked from I1 (worst), SI1, 
+#SI2, VS1, VS2, VVS1, VVS2 to IF (best). Only 1790 diamonds (3.32% of the sample) present the best 
+#level of clarity and 741 (1.4%) present the worst.
 
-summary(diamonds)
-
-
-#Frequencies of categorical variables in the database (color, purity and cut)
-table(diamonds$color)
-table(diamonds$clarity)
 table(diamonds$cut)
-table(diamonds$color, diamonds$clarity)
-
+#Almost 40% of diamonds in the dataset (21551) have the best quality cut.
 
 #Mean of price of each categorical variable
 by(diamonds$price,list(diamonds$clarity),FUN=mean) 
