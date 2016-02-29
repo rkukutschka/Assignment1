@@ -4,7 +4,7 @@
 #Assignment1: In-class assignment
 #Descriptive Statistics using R databases
 #29 February 2016
-#Mariam Sanjuch & Roberto Mart??nez B. Kukutschka
+#Mariam Sanjuch & Roberto Martinez B. Kukutschka
 
 ################################
 
@@ -37,21 +37,20 @@ sapply(diamonds[,c(1,5:10)], range) %>% round(digits=2)
 sapply(diamonds[,c(1,5:10)], mean) %>% round(digits=2) 
 sapply(diamonds[,c(1,5:10)], median) %>% round(digits=2)
 sapply(diamonds[,c(1,5:10)], sd) %>% round(digits=2)
-#Based on the results the highest variation in the data seems to be in the variables "carat" and "price".
-#The difference between the mean and the median values in these 2 variables also suggest a skewed data that is not normally distributed.
+#Based on the fact that the mean and the median of "price" are vey far from each other, the variable seems to be skewed/not normally distributed.
+#The small standard deviation in "carat", "depth" and "table" show that the values for these variables are closely grouped together.
 
-hist.default(diamonds$carat, breaks=10)
-hist.default(diamonds$price, breaks=10)
+hist.default(diamonds$price, breaks=30)
+#The histogram proves that "price" is indeed skewed. There is a high number of diamonds under $5000, but also 
 
-hist.default(diamonds$table, breaks=30)
+hist.default(diamonds$carat, breaks=50)
 hist.default(diamonds$depth, breaks=30)
+hist.default(diamonds$table, breaks=50)
 
+#III. DESCRIBING THE CATEGORICAL VARIABLES
 table(diamonds$color)
 table(diamonds$clarity)
 table(diamonds$color, diamonds$clarity)
-
-
-#Type of data by object
 
 summary(diamonds)
 
@@ -77,6 +76,3 @@ qplot(x = cut, data = diamonds)
 
 #Boxplot of price of diamonds by cut
 split(diamonds$price, diamonds$cut) %>% boxplot()
-
-
-#goodjob
