@@ -3,7 +3,7 @@
 #INTRODUCTION TO COLLABORATIVE RESEARCH
 #Assignment1: In-class assignment
 #Descriptive Statistics using R databases
-#23 February 2016
+#29 February 2016
 #Mariam Sanjuch & Roberto Mart??nez B. Kukutschka
 
 ################################
@@ -21,20 +21,30 @@ data()
 data(diamonds) 
 names(diamonds)
 
-#OVERLOOK OF THE DATASET:
+#I. OVERLOOK OF THE DATASET:
 head(diamonds)
 length(diamonds) 
 nrow(diamonds) 
-sapply(diamonds, is.numeric) 
+sapply(diamonds, is.numeric)
 #The database contains 10 columns and 5390 rows
 #The variables "cut", "color" and "clarity" are not numeric.
 
 sapply(diamonds, function(x) sum(is.na(x)))
-#There are no missing values in the database
+#There are no missing values in the dataset.
 
-#DESCRIPTIVES FOR NUMERIC VARIABLES
+#II. DESCRIPTIVES FOR NUMERIC VARIABLES
+sapply(diamonds[,c(1,5:10)], range) %>% round(digits=2) 
 sapply(diamonds[,c(1,5:10)], mean) %>% round(digits=2) 
+sapply(diamonds[,c(1,5:10)], median) %>% round(digits=2)
 sapply(diamonds[,c(1,5:10)], sd) %>% round(digits=2)
+#Based on the results the highest variation in the data seems to be in the variables "carat" and "price".
+#The difference between the mean and the median values in these 2 variables also suggest a skewed data that is not normally distributed.
+
+hist.default(diamonds$carat, breaks=10)
+hist.default(diamonds$price, breaks=10)
+
+hist.default(diamonds$table, breaks=30)
+hist.default(diamonds$depth, breaks=30)
 
 table(diamonds$color)
 table(diamonds$clarity)
