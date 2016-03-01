@@ -8,6 +8,11 @@
 
 ################################
 
+#Setting-up working-directory
+getwd()            #check the current working directory
+setwd("/Users/mariamsanjush/Desktop/Assignment1")  #Setting the working directory
+
+
 #Packages used for the exercise:
 library(dplyr)
 library(rio)

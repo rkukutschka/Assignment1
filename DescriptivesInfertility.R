@@ -8,10 +8,7 @@
 
 #Setting up the working-directory
 getwd()            #check the current working directory
-
-ProjectWD <-"/Users/mariamsanjush/Desktop/Assignment_1/Descriptive_Infertality_Data.R"
-
-setwd(ProjectWD)   #Using this command to set the working directory everytime
+setwd("/Users/mariamsanjush/Desktop/Assignment1")  #Setting the working directory
 
 getwd()            #Re-check the working directory
 dir()
@@ -24,10 +21,11 @@ library(vcdExtra)
 
 #Database selection
 data()             #Checking out the available databases
-data(infert)       #We have decided to work on the "Infertile dataset", which is about the infertility after spontaneous and induced abortion.
-                   #includes 248 variables and 8 observations.
+data(infert)       
 names (infert)
 ?infert
+#We have decided to work on the "Infertile dataset", which is about the infertility after spontaneous and induced abortion.
+#includes 248 variables and 8 observations.
   
 #-------Exploring the Data-----------#
 #Inspection of the raw data
@@ -36,16 +34,16 @@ tail(infert)
 View(infert)
 
 #Type of data object and it's dimensions
-class(infert)   #Its a "data.frame"
+class(infert)                   #Its a "data.frame"
 
 #two ways to the numbers of rows
-nrow(infert)       #Number of rows=248  
+nrow(infert)                    #Number of rows=248  
 length(infert[ ,1]) 
 #two ways to the numbers of columns
-ncol(infert)      #Number of columns=8  
+ncol(infert)                  #Number of columns=8  
 length(infert)
 
-str (infert)      #Overview of the data
+str (infert)                 #Overview of the data
 
 #Ploting and inspecting the data
 plot(infert)
@@ -64,17 +62,13 @@ sapply(infert[,c(2:8)], range) %>% round(digits=2)
 sapply(infert[,c(2:8)], mean) %>% round(digits=2) 
 sapply(infert[,c(2:8)], median) %>% round(digits=2)
 sapply(infert[,c(2:8)], sd) %>% round(digits=2)
-#Based on the results the highest variation in the data seems to be in the variables "carat" and "price".
-#The difference between the mean and the median values in these 2 variables also suggest a skewed data that is not normally distributed.
+#The range, mean, median and standard deviation for all the variables are not accurate since most of the variables are dichotomous/catagorical.
 
 #Calculating the mean of numeric variables
 mean(infert$age)   #Mean of age variable at the infertile dataset is 31.50403
 
-hist.default(infert$age, breaks=20)
+hist.default(infert$age, breaks=30)    #Not normally distributed
 hist.default(infert$induced, breaks=30)
-
-hist.default(infert$education)
-hist.default(infert$depth, breaks=30)
 
 table(infert$age)
 table(infert$induced)      #143 women with no induced abortion, 68 women with one induced abortion and 37 women with two or more induced abortion.
@@ -94,6 +88,5 @@ prop.table(table1,2)
 #The highest spontaneous abortion is among women with age (36-41) with 21% & (26-31) 15%.
 
 
-
-
+#############Thank you!#############
 
