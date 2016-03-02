@@ -1,34 +1,32 @@
-#####--------------------------------------#####
+################################
 #INTRODUCTION TO COLLABORATIVE RESEARCH
 #Assignment1: In-class assignment
 #Descriptive Statistics using R databases
 #29 February 2016
 #Mariam Sanjuch & Roberto Martinez B. Kukutschka
-------------------------------------------------
+################################
 
 #Setting up the working-directory
 getwd()            #check the current working directory
-setwd("/Users/mariamsanjush/Desktop/Assignment1")  #Setting the working directory
+setwd("/Assignment1")  #Setting the working directory
 
 getwd()            #Re-check the working directory
 dir()
 
-#Package used:
+#Packages used:
 library(dplyr)
 library(rio)
 library(ggplot2)
 library(vcdExtra)
 
 #Database selection
-data()             #Checking out the available databases
 data(infert)       
 names (infert)
 ?infert
 #We have decided to work on the "Infertile dataset", which is about the infertility after spontaneous and induced abortion.
-#includes 248 variables and 8 observations.
+#The database includes 248 variables and 8 observations.
   
-#-------Exploring the Data-----------#
-#Inspection of the raw data
+#I. OVERLOOK OF THE DATASET
 head(infert)
 tail(infert)
 View(infert)

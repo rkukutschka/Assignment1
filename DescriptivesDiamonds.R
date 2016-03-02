@@ -1,16 +1,14 @@
 ################################
-
 #INTRODUCTION TO COLLABORATIVE RESEARCH
 #Assignment1: In-class assignment
 #Descriptive Statistics using R databases
 #29 February 2016
 #Mariam Sanjuch & Roberto Martinez B. Kukutschka
-
 ################################
 
 #Setting-up working-directory
 getwd()            #check the current working directory
-setwd("/Users/mariamsanjush/Desktop/Assignment1")  #Setting the working directory
+setwd("~/Documents/Assignment1/")  #Setting the working directory
 
 
 #Packages used for the exercise:
@@ -27,7 +25,6 @@ data(diamonds)
 names(diamonds)
 
 #I. OVERLOOK OF THE DATASET
-
 head(diamonds)
 length(diamonds) 
 nrow(diamonds) 
@@ -50,9 +47,9 @@ sapply(diamonds[,c(1,5:10)], sd) %>% round(digits=2)
 hist.default(diamonds$price, breaks=30)
 #The histogram proves that "price" is indeed skewed. There is a high number of diamonds under $5000, but also a wide range in prices that go up to >$15,000.
 
-hist.default(diamonds$carat, breaks=50)
-hist.default(diamonds$depth, breaks=30)
-hist.default(diamonds$table, breaks=50)
+hist(diamonds$carat, breaks=50)
+hist(diamonds$depth, breaks=30)
+hist(diamonds$table, breaks=50)
 
 #III. DESCRIBING THE CATEGORICAL VARIABLES
 #Given that categorical variables cannot be described with the same methods as the numerical ones, this section
