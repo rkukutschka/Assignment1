@@ -6,13 +6,6 @@
 #Mariam Sanjuch & Roberto Martinez B. Kukutschka
 ################################
 
-#Setting up the working-directory
-getwd()            #check the current working directory
-setwd("/Assignment1")  #Setting the working directory
-
-getwd()            #Re-check the working directory
-dir()
-
 #Packages used:
 library(dplyr)
 library(rio)
@@ -22,7 +15,6 @@ library(vcdExtra)
 #Database selection
 data(infert)       
 names (infert)
-?infert
 #We have decided to work on the "Infertile dataset", which is about the infertility after spontaneous and induced abortion.
 #The database includes 248 variables and 8 observations.
   
@@ -48,7 +40,6 @@ plot(infert)
 identify(infert)
 
 #Summarising the data
-xtabs(infert)
 sapply(infert, is.numeric)   #The variable "education" is not numeric
 summary(infert)
 

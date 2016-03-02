@@ -16,9 +16,6 @@ library(dplyr)
 library(rio)
 library(ggplot2)
 
-#Checking out the available databases:
-data()
-
 #We chose the database called "diamonds", which includes information regarding 
 #the prices and attributes of almost 54,000 diamonds.
 data(diamonds) 
@@ -79,7 +76,6 @@ by(diamonds$price,list(diamonds$color),FUN=mean)
 diamonds$caratcat<-cut(diamonds$carat, c(0,1,2,3,4,5)) #Created a categorical variable of "carat"
 by(diamonds$price,list(diamonds$caratcat),FUN=mean)
 
-
 #Plotting diamonds by clarity
 diamonds$clarity <- ordered(diamonds$clarity, 
       levels = c("I1", "SI1", "SI2", "VS1", "VS2", "VVS1", "VVS2", "IF")) #Ordering clarity of diamonds from worst to best
@@ -89,3 +85,5 @@ qplot(x = cut, data = diamonds)
 
 #Boxplot of price of diamonds by cut
 split(diamonds$price, diamonds$cut) %>% boxplot()
+
+source("DescriptivesInfertility.R")
