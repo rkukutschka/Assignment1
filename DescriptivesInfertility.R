@@ -21,7 +21,6 @@ names (infert)
 #I. OVERLOOK OF THE DATASET
 head(infert)
 tail(infert)
-View(infert)
 
 #Type of data object and it's dimensions
 class(infert)                   #Its a "data.frame"
@@ -33,10 +32,7 @@ length(infert[ ,1])
 ncol(infert)                  #Number of columns=8  
 length(infert)
 
-str (infert)                 #Overview of the data
-
-#Ploting and inspecting the data
-plot(infert)
+str(infert)                 #Overview of the data
 identify(infert)
 
 #Summarising the data
