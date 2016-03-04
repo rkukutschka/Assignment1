@@ -54,8 +54,10 @@ hist.default(diamonds$price, breaks=30)
 
 hist(diamonds$carat, 
      breaks=50,
+     col="red",
+     border="white",
      main='Frequency distribution of the weight of diamonds',
-     xlim = c(0,6),
+     xlim = c(0,3),
      ylim = c(0,12000),
      xlab ='Weight in carats',
      ylab ='Frequency',
@@ -63,17 +65,23 @@ hist(diamonds$carat,
 
 hist(diamonds$depth, 
      breaks=30,
+     col="navyblue",
+     border="white",
      main='Frequency distribution of the depth of diamonds',
-     xlim = c(40,90),
+     xlim = c(55,70),
      ylim= c(0,20000),
      xlab='Depth in mm',
      ylab='Frequency',
      include.lowest = TRUE)
      
 hist(diamonds$table, 
-     breaks=50,
-     main='Diamond table',
-     xlab='width of the top of diamond relative to widest point',
+     breaks=40,
+     col="blue",
+     border="white",
+     main='Width of the top of diamond relative to widest pointDiamond table',
+     xlim = c(45,70),
+     ylim= c(0,12500),
+     xlab='table in mm',
      ylab='frequency')
 
 #III. DESCRIBING THE CATEGORICAL VARIABLES
@@ -120,14 +128,11 @@ qplot(x = cut, data = diamonds)
 split(diamonds$price, diamonds$cut) %>% boxplot()
 
 #Plotting the diamonds by carat and price
-ggplot2::ggplot(diamonds, aes(carat, price)) +
-  geom_point(shape=1) + geom_smooth(method=lm) + theme_bw()
-
-##since carat is left-skewed you might wanna take the log
+#Since carat is left-skewed we took the log
 ln.carat <- log(diamonds$carat)
 hist(ln.carat)
 
-# Plotting price and logged carat the distribution appears non-linear
+#Plotting price and logged carat the distribution appears non-linear
 ggplot2::ggplot(diamonds, aes(ln.carat, price)) +
   geom_point(shape=1) + geom_smooth() + theme_bw()
 
