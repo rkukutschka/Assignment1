@@ -86,4 +86,16 @@ qplot(x = cut, data = diamonds)
 #Boxplot of price of diamonds by cut
 split(diamonds$price, diamonds$cut) %>% boxplot()
 
+#Plotting the diamonds by carat and price
+ggplot2::ggplot(diamonds, aes(carat, price)) +
+  geom_point(shape=1) + geom_smooth(method=lm) + theme_bw()
+
+##since carat is left-skewed you might wanna take the log
+ln.carat <- log(diamonds$carat)
+hist(ln.carat)
+
+# Plotting price and logged carat the distribution appears non-linear
+ggplot2::ggplot(diamonds, aes(ln.carat, price)) +
+  geom_point(shape=1) + geom_smooth() + theme_bw()
+
 source("DescriptivesInfertility.R", local = FALSE, print.eval = TRUE, verbose = TRUE)
