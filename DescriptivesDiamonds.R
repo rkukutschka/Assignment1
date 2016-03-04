@@ -87,3 +87,8 @@ qplot(x = cut, data = diamonds)
 split(diamonds$price, diamonds$cut) %>% boxplot()
 
 source("DescriptivesInfertility.R", local = FALSE, print.eval = TRUE, verbose = TRUE)
+
+citation()
+# R Core Team (2015). R: A language and environment for statistical
+# computing. R Foundation for Statistical Computing, Vienna, Austria. URL
+# https://www.R-project.org/.
