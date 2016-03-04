@@ -59,7 +59,6 @@ hist(diamonds$carat,
      ylim = c(0,12000),
      xlab ='Weight in carats',
      ylab ='Frequency',
-     col =
      include.lowest = TRUE)
 
 hist(diamonds$depth, 
