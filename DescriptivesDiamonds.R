@@ -54,16 +54,23 @@ hist.default(diamonds$price, breaks=30)
 
 hist(diamonds$carat, 
      breaks=50,
-     main='weight of diamond in carats',
-     xlab='carats',
-     ylab='frequency')
+     main='Frequency distribution of the weight of diamonds',
+     xlim = c(0,6),
+     ylim = c(0,12000),
+     xlab ='Weight in carats',
+     ylab ='Frequency',
+     col =
+     include.lowest = TRUE)
 
 hist(diamonds$depth, 
      breaks=30,
-     main='Depth in mm',
-     xlab='depth',
-     ylab='frequency')
-
+     main='Frequency distribution of the depth of diamonds',
+     xlim = c(40,90),
+     ylim= c(0,20000),
+     xlab='Depth in mm',
+     ylab='Frequency',
+     include.lowest = TRUE)
+     
 hist(diamonds$table, 
      breaks=50,
      main='Diamond table',
@@ -91,9 +98,14 @@ table(diamonds$cut)
 #Given that diamonds are a girl's best friends, we are interested in finding out, whether the best quality
 #are also the most most expensive. In order to do so, we calculated the mean price of a diamond by cut, color, clarity and size.
 
-by(diamonds$price,list(diamonds$clarity),FUN=mean) 
-by(diamonds$price,list(diamonds$cut),FUN=mean) 
-by(diamonds$price,list(diamonds$color),FUN=mean)
+by(diamonds$price,list(diamonds$clarity),
+   FUN=mean) 
+
+by(diamonds$price,list(diamonds$cut),
+   FUN=mean) 
+
+by(diamonds$price,list(diamonds$color),
+   FUN=mean)
 
 diamonds$caratcat<-cut(diamonds$carat, c(0,1,2,3,4,5)) #Created a categorical variable of "carat"
 by(diamonds$price,list(diamonds$caratcat),FUN=mean)
