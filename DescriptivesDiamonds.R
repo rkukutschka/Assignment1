@@ -22,6 +22,7 @@ data(diamonds)
 names(diamonds)
 
 #I. OVERLOOK OF THE DATASET
+
 head(diamonds)
 length(diamonds) 
 nrow(diamonds) 
@@ -33,20 +34,41 @@ sapply(diamonds, function(x) sum(is.na(x)))
 #There are no missing values in the dataset.
 
 #II. DESCRIPTIVES FOR NUMERIC VARIABLES
+sapply(diamonds[,c(1,5:10)], range) %>% 
+  round(digits=2)
 
-sapply(diamonds[,c(1,5:10)], range) %>% round(digits=2) 
-sapply(diamonds[,c(1,5:10)], mean) %>% round(digits=2) 
-sapply(diamonds[,c(1,5:10)], median) %>% round(digits=2)
-sapply(diamonds[,c(1,5:10)], sd) %>% round(digits=2)
+sapply(diamonds[,c(1,5:10)], mean) %>% 
+  round(digits=2)
+
+sapply(diamonds[,c(1,5:10)], median) %>% 
+  round(digits=2)
+
+sapply(diamonds[,c(1,5:10)], sd) %>% 
+  round(digits=2)
+
 #Based on the fact that the mean and the median of "price" are vey far from each other, the variable seems to be skewed/not normally distributed.
 #The small standard deviation in "carat", "depth" and "table" show that the values for these variables are closely grouped together.
 
 hist.default(diamonds$price, breaks=30)
 #The histogram proves that "price" is indeed skewed. There is a high number of diamonds under $5000, but also a wide range in prices that go up to >$15,000.
 
-hist(diamonds$carat, breaks=50)
-hist(diamonds$depth, breaks=30)
-hist(diamonds$table, breaks=50)
+hist(diamonds$carat, 
+     breaks=50,
+     main='weight of diamond in carats',
+     xlab='carats',
+     ylab='frequency')
+
+hist(diamonds$depth, 
+     breaks=30,
+     main='Depth in mm',
+     xlab='depth',
+     ylab='frequency')
+
+hist(diamonds$table, 
+     breaks=50,
+     main='Diamond table',
+     xlab='width of the top of diamond relative to widest point',
+     ylab='frequency')
 
 #III. DESCRIBING THE CATEGORICAL VARIABLES
 #Given that categorical variables cannot be described with the same methods as the numerical ones, this section
@@ -63,7 +85,7 @@ table(diamonds$clarity)
 #level of clarity and 741 (1.4%) present the worst.
 
 table(diamonds$cut)
-#Almost 40% of diamonds in the dataset (21551) have the best quality cut.
+#Almost 40% of diamonds in the dataset (21,551) have the best quality cut.
 
 #FURTHER DESCRIPTIVE ANALYSIS:
 #Given that diamonds are a girl's best friends, we are interested in finding out, whether the best quality
