@@ -12,7 +12,8 @@ The repository contains two files:
   
 The first file (DescriptiveDiamonds.R) also contains a dynamic link to the second one.  
 
-##Assignment 2 for the course MPP-E1180: Introduction to Collaborative Social Science Data Analysis by @ChristopherGandrud at the Hertie School of Governance. We worked on our research proposal regarding the role of different transparency measurements on grand corruption in the EU. The second assignment consists of 2 files:  
+##Assignment 2 
+For the course MPP-E1180: Introduction to Collaborative Social Science Data Analysis by @ChristopherGandrud at the Hertie School of Governance. We worked on our research proposal regarding the role of different transparency measurements on grand corruption in the EU. The second assignment consists of 2 files:  
  
  *Assiggnment2.RMD contains the Markdown code and format for the article.
  *Bibliography.bib contains the sources consulted for the proposal.
