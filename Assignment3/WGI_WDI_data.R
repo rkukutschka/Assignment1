@@ -117,10 +117,10 @@ wdi <- merge(wdi, urban,by=c("iso2c","year","country"), all = TRUE)
 
 wdi$country <- countrycode(wdi$iso2c, origin = "iso2c",destination = "country.name", warn = TRUE)
 
-# 3 - Merge the two data frames (Governance and Development Indicators)
+# STEP 3: Create and aggregated database
 finaldata <- merge(wdi,cc,by=c("iso2c","year", "country"), all = TRUE)
 
-# 1.3.3. Rename the variables so they are easier to identify
+# Rename variables for easier identification
 finaldata <- rename  (finaldata,
                 trade = NE.TRD.GNFS.ZS,
                 education = SE.SEC.ENRR,
@@ -130,3 +130,6 @@ finaldata <- rename  (finaldata,
                 cocscore = estimate,
                 country = country
                 )
+
+# Create a csv file with the final version of the data
+write.csv(finaldata, file="WGI_WDI_data.csv")
