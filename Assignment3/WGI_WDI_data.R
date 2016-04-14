@@ -22,10 +22,8 @@ library(dplyr)
 library(Hmisc)
 library(WDI)
 library(xlsxjars)
-library(rJava)
 library(ggplot2)
 library(zoo)
-library(countrycode)
 
 #####################################
 # SECTION I: COLLLECTING DATA 
